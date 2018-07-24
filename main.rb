@@ -9,7 +9,6 @@ data['users'].each do |u|
 	user = User.new(u)
 	users << user
 end
-# puts users.inspect
 
 orders = []
 data['queued_orders'].each do |u|
@@ -21,10 +20,16 @@ if orders.first.matching_orders?(orders.last)
 	orders.each do |o| 
 		o.state = 'executed'
 	end	
+  # - the seller btc_balance is decreased by the orders btc_amount
+ 	users.each do |u|
+  	if u.id == order.first.user_id
+  		# u.btc_amount
+  	end	
+	end
 end
 
 
-puts orders.inspect
+# puts orders.inspect
 
 
 # output_file = File.open('output.json', 'w')
